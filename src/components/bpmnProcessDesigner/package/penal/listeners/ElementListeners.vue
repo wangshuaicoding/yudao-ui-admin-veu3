@@ -370,7 +370,7 @@ const removeListenerField = (index) => {
 }
 // 移除监听器
 const removeListener = (index) => {
-  debugger
+  // debugger
   ElMessageBox.confirm('确认移除该监听器吗？', '提示', {
     confirmButtonText: '确 认',
     cancelButtonText: '取 消'

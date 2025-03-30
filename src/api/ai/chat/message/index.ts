@@ -1,7 +1,7 @@
 import request from '@/config/axios'
-import { fetchEventSource } from '@microsoft/fetch-event-source'
-import { getAccessToken } from '@/utils/auth'
-import { config } from '@/config/axios/config'
+import {fetchEventSource} from '@microsoft/fetch-event-source'
+import {getAccessToken} from '@/utils/auth'
+import {config} from '@/config/axios/config'
 
 // 聊天VO
 export interface ChatMessageVO {
@@ -68,7 +68,7 @@ export const ChatMessageApi = {
 
   // 删除消息
   deleteChatMessage: async (id: string) => {
-    return await request.delete({ url: `/ai/chat/message/delete?id=${id}` })
+    return await request.delete({url: `/ai/chat/message/delete?id=${id}`})
   },
 
   // 删除指定对话的消息
@@ -80,11 +80,11 @@ export const ChatMessageApi = {
 
   // 获得消息分页
   getChatMessagePage: async (params: any) => {
-    return await request.get({ url: '/ai/chat/message/page', params })
+    return await request.get({url: '/ai/chat/message/page', params})
   },
 
   // 管理员删除消息
   deleteChatMessageByAdmin: async (id: number) => {
-    return await request.delete({ url: `/ai/chat/message/delete-by-admin?id=${id}` })
+    return await request.delete({url: `/ai/chat/message/delete-by-admin?id=${id}`})
   }
 }

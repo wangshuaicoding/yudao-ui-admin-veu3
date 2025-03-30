@@ -72,7 +72,7 @@ export const socialAuthRedirect = (type: number, redirectUri: string) => {
 }
 // 获取验证图片以及 token
 export const getCode = (data: any) => {
-  debugger
+  // debugger
   return request.postOriginal({ url: 'system/captcha/get', data })
 }
 

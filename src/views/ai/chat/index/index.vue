@@ -19,16 +19,16 @@
         <div class="btns" v-if="activeConversation">
           <el-button type="primary" bg plain size="small" @click="openChatConversationUpdateForm">
             <span v-html="activeConversation?.modelName"></span>
-            <Icon icon="ep:setting" class="ml-10px" />
+            <Icon icon="ep:setting" class="ml-10px"/>
           </el-button>
           <el-button size="small" class="btn" @click="handlerMessageClear">
-            <Icon icon="heroicons-outline:archive-box-x-mark" color="#787878" />
+            <Icon icon="heroicons-outline:archive-box-x-mark" color="#787878"/>
           </el-button>
           <el-button size="small" class="btn">
-            <Icon icon="ep:download" color="#787878" />
+            <Icon icon="ep:download" color="#787878"/>
           </el-button>
           <el-button size="small" class="btn" @click="handleGoTopMessage">
-            <Icon icon="ep:top" color="#787878" />
+            <Icon icon="ep:top" color="#787878"/>
           </el-button>
         </div>
       </el-header>
@@ -38,7 +38,7 @@
         <div>
           <div class="message-container">
             <!-- 情况一：消息加载中 -->
-            <MessageLoading v-if="activeMessageListLoading" />
+            <MessageLoading v-if="activeMessageListLoading"/>
             <!-- 情况二：无聊天对话时 -->
             <MessageNewConversation
               v-if="!activeConversation"
@@ -77,7 +77,7 @@
           ></textarea>
           <div class="prompt-btns">
             <div>
-              <el-switch v-model="enableContext" />
+              <el-switch v-model="enableContext"/>
               <span class="ml-5px text-14px text-#8f8f8f">上下文</span>
             </div>
             <el-button
@@ -111,8 +111,8 @@
 </template>
 
 <script setup lang="ts">
-import { ChatMessageApi, ChatMessageVO } from '@/api/ai/chat/message'
-import { ChatConversationApi, ChatConversationVO } from '@/api/ai/chat/conversation'
+import {ChatMessageApi, ChatMessageVO} from '@/api/ai/chat/message'
+import {ChatConversationApi, ChatConversationVO} from '@/api/ai/chat/conversation'
 import ConversationList from './components/conversation/ConversationList.vue'
 import ConversationUpdateForm from './components/conversation/ConversationUpdateForm.vue'
 import MessageList from './components/message/MessageList.vue'
@@ -121,7 +121,7 @@ import MessageLoading from './components/message/MessageLoading.vue'
 import MessageNewConversation from './components/message/MessageNewConversation.vue'
 
 /** AI 聊天对话 列表 */
-defineOptions({ name: 'AiChat' })
+defineOptions({name: 'AiChat'})
 
 const route = useRoute() // 路由
 const message = useMessage() // 消息弹窗
@@ -306,7 +306,8 @@ const handlerMessageClear = async () => {
     await ChatMessageApi.deleteByConversationId(activeConversationId.value)
     // 刷新 message 列表
     activeMessageList.value = []
-  } catch {}
+  } catch {
+  }
 }
 
 /** 回到 message 列表的顶部 */
@@ -434,7 +435,7 @@ const doSendMessageStream = async (userMessage: ChatMessageVO) => {
       conversationInAbortController.value,
       enableContext.value,
       async (res) => {
-        const { code, data, msg } = JSON.parse(res.data)
+        const {code, data, msg} = JSON.parse(res.data)
         if (code !== 0) {
           message.alert(`对话异常! ${msg}`)
           return
@@ -467,7 +468,8 @@ const doSendMessageStream = async (userMessage: ChatMessageVO) => {
         stopStream()
       }
     )
-  } catch {}
+  } catch {
+  }
 }
 
 /** 停止 stream 流式调用 */
@@ -552,7 +554,8 @@ const textRoll = async () => {
       }
     }
     let timer = setTimeout(task, textSpeed.value)
-  } catch {}
+  } catch {
+  }
 }
 
 /** 初始化 **/
